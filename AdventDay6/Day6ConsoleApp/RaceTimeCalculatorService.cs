@@ -24,17 +24,14 @@
         {
             var winningTimes = 0;
 
-            Parallel.ForEach(Partitioner.Create(0, raceTime),
-                range => {
-                    for (long time = range.Item1; time < range.Item2; time++)
-                    {
-                        var distance = (raceTime - time) * time;
-                        if (distance > raceDistance)
-                        {
-                            Interlocked.Increment(ref winningTimes);
-                        }
-                    }
-                });
+            for (int time = 0; time < raceTime; time++)
+            {
+                var distance = (raceTime - time) * time;
+                if (distance > raceDistance)
+                {
+                    winningTimes++;
+                }
+            }
 
             return winningTimes;
         }
