@@ -1,4 +1,4 @@
-﻿namespace DayOneConsoleApp
+﻿namespace DayFourConsoleApp
 {
     using AdventOfCode.Shared;
     using Microsoft.Extensions.DependencyInjection;
@@ -9,14 +9,17 @@
         {
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<FileReader>()
-                .AddSingleton<ICalibrationValueService, CalibrationValueService>()
+                .AddSingleton<CardDataParser>()
                 .BuildServiceProvider();
 
-            var calibrationValueService = serviceProvider.GetService<ICalibrationValueService>();
 
-            var values = await calibrationValueService!.GetValuesForEachRowAsync();
+            var calibrationValueService = serviceProvider.GetService<CardDataParser>();
 
-            var result = values.Sum();
+            var values = await calibrationValueService!.ParseRawCardDataAsync();
+
+            var part1Result = values.Sum(x => x.CardWorth);
+
+
         }
     }
 }

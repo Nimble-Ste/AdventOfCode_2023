@@ -1,10 +1,12 @@
 ﻿namespace DayOneConsoleApp
 {
-    public class CalibrationValueService(FileReader fileReader) : ICalibrationValueService
+    using AdventOfCode.Shared;
+
+    public class CalibrationValueService (FileReader fileReader): ICalibrationValueService
     {
         public async Task<List<int>> GetValuesForEachRowAsync()
         {
-            var rawValues = await fileReader.ReadAsync();
+            var rawValues = await fileReader.ReadAsync("CalibrationValues.txt");
 
             List<int> results = new List<int>();
 

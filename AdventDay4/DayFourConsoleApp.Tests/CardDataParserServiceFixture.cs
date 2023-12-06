@@ -1,27 +1,28 @@
-namespace DayOneConsoleApp.Tests
+﻿using NUnit.Framework;
+
+namespace DayFourConsoleApp.Tests
 {
     using AdventOfCode.Shared;
     using NSubstitute;
-    using NUnit.Framework;
 
     [TestFixture]
-    public abstract class CalibrationValueServiceFixture
+    public abstract class CardDataParserServiceFixture
     {
         [SetUp]
         public void Setup()
         {
             fileReader = Substitute.For<FileReader>();
-            
+
             TestSetup();
 
-            Fixture = new CalibrationValueService(fileReader);
+            Fixture = new CardDataParser(fileReader);
         }
 
-        protected CalibrationValueService Fixture;
-
+        protected CardDataParser Fixture;
 
         protected FileReader fileReader;
 
         protected abstract void TestSetup();
+
     }
 }

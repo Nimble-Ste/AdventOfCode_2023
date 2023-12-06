@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="CalibrationValues.txt" />
+    <None Remove="CardData.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="CalibrationValues.txt">
+    <Content Include="CardData.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
