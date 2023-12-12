@@ -14,27 +14,28 @@
 
             var raceTimeCalculatorService = serviceProvider.GetService<RaceTimeCalculatorService>();
 
-            var numberOfWaysToWin = await raceTimeCalculatorService!.CalculateCombinationsAsync(new Dictionary<int, long>()
-            {
-                {56 , 546 },
-                {97, 1927 },
-                {78, 1131 },
-                {75, 1139 }
-            });
+            //var numberOfWaysToWin = raceTimeCalculatorService!.CalculateCombinations(
+            //    new List<(int raceTime, long distance)>
+            //    {
+            //        new(56, 546),
+            //        new(97, 1937),
+            //        new(78, 1131),
+            //        new(75, 1139)
+            //    });
 
-            var winningWays = numberOfWaysToWin.Select(x => x.Item2);
+            //var winningWays = numberOfWaysToWin.Select(x => x.Item2);
 
-            var partAResult = winningWays.Aggregate((a, x) => a * x);
+            //var partAResult = winningWays.Aggregate((a, x) => a * x);
 
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
-            var partBNumberOfWays = await raceTimeCalculatorService!.CalculateCombinationsAsync(new Dictionary<int, long>()
-            {
-                {56977875 , 546192711311139 }
-            });
+            var partBNumberOfWays = await raceTimeCalculatorService!.CalculateCombinations(new List<(int raceTime, long distance)>()
+                {
+                    new(56977875, 546192711311139)
+                });
 
-            var winningWaysPartB = partBNumberOfWays.Select(x => x.Item2);
+            var winningWaysPartB = partBNumberOfWays.Select(x => x.timeTaken);
 
             var partBResult = winningWaysPartB.Aggregate((a, x) => a * x);
 
