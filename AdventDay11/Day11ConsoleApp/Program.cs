@@ -23,7 +23,7 @@
         static async Task Main(string[] args)
         {
 
-           // PartA();
+            PartA();
             
             PartB();
 
